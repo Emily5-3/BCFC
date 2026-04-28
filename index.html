@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Broome County Community Services Map (Geocoded)</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="newstyle.css">
+</head>
+
+<body>
+  <header>
+    <h1>Broome County Community Services Map</h1>
+    <!-- Add just once (near top of body) -->
+    <div id="nws-alert-banner"
+      style="display:none; position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:9999; padding:8px 12px; border-radius:6px; box-shadow:0 2px 6px rgba(0,0,0,0.2); background:#ffefc8; font-weight:600;">
+    </div>
+    <div class="controls">
+      <button id="screenshotBtn">Screenshot</button>
+      <button id="weatherBtn"
+        onClick="window.open('https://forecast.weather.gov/MapClick.php?lat=42.160225737750224&lon=-75.8196013865951','_blank').focus()">Weather</button>
+      <button id="roadBtn"
+        onClick="window.open('https://511ny.org/region/Southern%20Tier%20Hornell%20Elmira%20Binghamton%20Area','_blank').focus()">Roads</button>
+      <!-- ========= NEW RADAR BUTTON -->
+      <button id="toggleRadar">Radar</button>
+      <!-- ========= NEW RADAR BUTTON -->
+
+    </div>
+    <div id="status"></div>
+  </header>
+
+  <main>
+    <aside id="filters">
+      <h3>Search Box</h3>
+      <input id="searchBox" type="search" placeholder="Search by name…" />
+      <div class="set-btn-row">
+        <button id="selectAllBtn" title="Select all types">Select All</button>
+        <button id="resetBtn" title="Reset filters/search">Reset</button>
+      </div>
+
+      
+      <h3>Filter by Type</h3>
+      <div id="typeFilters"></div>
+      <p class="hint">
+      </p>
+      <h4>Routes</h4>
+      <div class="routes-btn-row">
+        <button id="toggleRoute86" class="route-btn route86-color">
+          I-86 Route through Tompkins Bridge
+        </button>
+
+        <button id="toggleTompkins" class="route-btn tompkins-color">
+          Avoid Tompkins Bridge
+        </button>
+
+        <button id="toggleFlood06" class="route-btn route86-color">
+          Flood of 2006
+        </button>
+
+        <button id="toggleFlood11" class="route-btn tompkins-color">
+          Flood of 2011
+        </button>
+
+</div>
+
+    </aside>
+
+    
+    <div id="map">
+      <!-- ========= NEW RADAR elements -->
+      <div id="timestamp">Loading…</div>
+      <div id="timeline">
+        <div class="timeline-track" id="timeline-track"></div>
+      </div>
+      <!-- ========= NEW RADAR elements -->
+
+    </div>
+  </main>
+
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script type="module" src="./assets/script.js"></script>
+
+  
+</body>
+</html>
